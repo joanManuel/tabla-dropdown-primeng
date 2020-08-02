@@ -1,0 +1,93 @@
+
+<div class="contenedor-cambiar-operacion">
+   <div class="contenedor-box">
+        <div class="cerrar" (click)="onClickCerrarVentana()" ><svg xmlns="http://www.w3.org/2000/svg" width="26.679" height="26.679" viewBox="0 0 26.679 26.679"><defs><style>.a{fill:#19110b;}</style></defs><path class="a" d="M401.279,876.668,390.608,887.34l10.672,10.672-2.668,2.668L387.94,890.008,377.268,900.68l-2.668-2.668,10.672-10.672L374.6,876.668,377.268,874l10.672,10.672L398.612,874Z" transform="translate(-374.6 -874)"/></svg></div>
+        <h1>Cambiar Operación</h1>
+        <!-- <span> <strong> Operación origen:</strong> Pegar pech + pergar sup</span> -->
+
+        <div class="grilla-cambio">
+
+<!-- PRUEBA CON TABLA PRIMENG  -->
+            <p-table
+            [value]="data"
+           
+            >
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Operación origen</th>
+                        <th>Elegir</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-item>
+                    <tr>  
+                        <td>{{item.nombre}}</td>
+                        <td>
+                           <p-dropdown
+                            [options]="dataOperacion"
+                            optionLabel="nombre"
+                            filter="true"
+                            [(ngModel)]="item.OperacionDestino"
+                            (onChange)="cambioSelect(valor.OperacionDestino.id)"
+                            [style]="{'max-width':'250px'}"
+                            (onClick)="activado(i)"
+                            >
+                                <ng-template let-item pTemplate="selectedItem">
+                                    <span>{{item.label}}</span>
+                                </ng-template>
+
+                                <ng-template let-select pTemplate="item">
+                                    <div class="ui-helper-clearfix">
+                                        <div>{{select.label}}</div>
+                                    </div>
+                                </ng-template>
+
+                                
+                            </p-dropdown>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+
+
+<!-- PRUEBA CON TABLA NORMAL  -->
+            <table class="tabla-normal">
+                <thead>
+                    <tr>
+                        <th>Operación Origen</th>
+                        <th>Elegir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let valor of data; let i=index" >
+                        <td [class.activado]="seleccionItem && i == idSeleccionItem"> {{valor.nombre}} </td>
+                        <!-- DROPDOWN  -->
+                        <td >
+                            <p-dropdown
+                            [options]="dataOperacion"
+                            optionLabel="nombre"
+                            filter="true"
+                            [(ngModel)]="valor.OperacionDestino"
+                            (onChange)="cambioSelect(valor.OperacionDestino.id)"
+                            [style]="{'max-width':'250px'}"
+                            (onClick)="activado(i)"
+                            >
+                                <ng-template let-item pTemplate="selectedItem">
+                                    <span>{{item.label}}</span>
+                                </ng-template>
+
+                                <ng-template let-select pTemplate="item">
+                                    <div class="ui-helper-clearfix">
+                                        <div>{{select.label}}</div>
+                                    </div>
+                                </ng-template>
+
+                                
+                            </p-dropdown>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="btn"> <button>Guardar</button> </div>
+    </div>
+</div>

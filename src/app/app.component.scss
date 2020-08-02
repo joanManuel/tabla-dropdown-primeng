@@ -1,0 +1,126 @@
+$color-primary: #FF660D;
+
+
+
+.contenedor-cambiar-operacion{
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.9);
+    height: 100vh;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    .contenedor-box{
+        background-color: white;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 95%;
+        max-width: 768px;
+        margin: 0 auto;
+        padding: 30px 30px;
+        display: grid;
+        row-gap: 10px;
+        .cerrar{
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            cursor: pointer;
+            svg{
+                width: 100%;
+            }
+        }
+        h1{
+            margin: 0;
+            text-align: center;
+        }
+
+        .grilla-cambio{
+            .tabla-normal{
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+                thead tr{
+                    th{
+                        padding: 10px;
+                        border-bottom: 2px solid $color-primary;
+                        font-size: 1.2rem;
+                    }
+                }
+                tbody tr {
+                    &:nth-child(even){
+                        td{
+                            &:nth-child(1){
+                                background-color: rgba($color-primary, .2);
+                            }
+                        }
+                    }
+                    td{
+                        border-top: 5px solid rgba($color-primary, 0);
+                        border-bottom: 5px solid rgba($color-primary, 0);
+                        font-weight: normal;
+                        &:nth-child(1){
+                            border-right: 2px solid $color-primary;
+                            position: relative;
+                            font-size: 1.2rem;
+                            padding: 5px 5px;
+                            &::after{
+                                content: '';
+                                position: absolute;
+                                right: -10px;
+                                width: 0;
+                                height: 0;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                border-left: 10px solid rgba($color-primary, .2);
+                                border-top: 10px solid transparent;
+                                border-bottom: 10px solid transparent;
+                                z-index: 9999;
+                            }
+                            
+                        }
+                        &:nth-child(2){
+                            padding: 0 0 0 10px;
+                        }
+                        
+                    }
+                    .activado{
+                        // td{
+                            &:nth-child(1){
+
+                                &::after{
+                                    content: '';
+                                    position: absolute;
+                                    right: -10px;
+                                    width: 0;
+                                    height: 0;
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                    border-left: 10px solid rgba($color-primary, 1)!important;
+                                    border-top: 10px solid transparent;
+                                    border-bottom: 10px solid transparent;
+                                    z-index: 9999;
+                                }
+                            }
+                        // }
+                    }
+                }
+            }
+        }
+        .btn{
+            margin-top: 15px;
+            button{
+               background-color: $color-primary;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+
+    display: block;
+    margin: 0 auto;
+
+    cursor: pointer;
+            }
+        }
+    }
+}
